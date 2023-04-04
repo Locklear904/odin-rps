@@ -15,10 +15,11 @@ function getComputerChoice() {
 }
 
 let playerChoice = " ";
-let computerChoice = getComputerChoice();
+let computerChoice = " ";
 let playerScore = 0;
 
 function playRound(playerChoice, computerChoice) {
+    computerChoice = getComputerChoice();
     playerChoice = prompt("Please enter rock, paper, or scissors", "");
     playerChoice.toLowerCase();
     if (playerChoice === computerChoice) {
