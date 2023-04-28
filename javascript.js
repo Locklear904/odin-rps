@@ -18,10 +18,14 @@ let playerChoice = " ";
 let computerChoice = " ";
 let playerScore = 0;
 
+const rockBtn = document.querySelector('#rock');
+const paperBtn = document.querySelector('#paper');
+const scissorsBtn = document.querySelector('#scissors');
+
 function playRound(playerChoice, computerChoice) {
     computerChoice = getComputerChoice();
-    playerChoice = prompt("Please enter rock, paper, or scissors", "");
-    playerChoice.toLowerCase();
+    //playerChoice = e.id;
+    //playerChoice.toLowerCase();
     if (playerChoice === computerChoice) {
         console.log("You tied!");
     }   else if (playerChoice === "rock" & computerChoice === "paper") {
@@ -47,7 +51,17 @@ function playRound(playerChoice, computerChoice) {
     }
 }
 
-function game() {
+rockBtn.addEventListener('click', function() {
+    playRound('rock', computerChoice);
+});
+paperBtn.addEventListener('click', function() {
+    playRound('paper', computerChoice);
+});
+scissorsBtn.addEventListener('click', function() {
+    playRound('paper', computerChoice);
+});
+
+/*function fiveRoundGame() {
     playRound(playerChoice, computerChoice);
     console.log(playerScore);
     playRound(playerChoice, computerChoice);
@@ -67,4 +81,4 @@ function game() {
     }
 }
 
-game();
+fiveRoundGame();*/
