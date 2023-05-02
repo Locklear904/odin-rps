@@ -1,5 +1,3 @@
-
-
 function getComputerChoice() {
     //assign random number 1-3 to variable//assign random number 1-3 to variable
     let computerChoice = Math.floor(Math.random() * (4-1) + 1);
@@ -17,37 +15,53 @@ function getComputerChoice() {
 let playerChoice = " ";
 let computerChoice = " ";
 let playerScore = 0;
+let computerScore = 0;
 
 const rockBtn = document.querySelector('#rock');
 const paperBtn = document.querySelector('#paper');
 const scissorsBtn = document.querySelector('#scissors');
+const playerScoreContainer = document.querySelector('#playerScoreContainer');
+const computerScoreContainer = document.querySelector('#computerScoreContainer');
+const gameText = document.querySelector('#gameText');
 
 function playRound(playerChoice, computerChoice) {
     computerChoice = getComputerChoice();
-    //playerChoice = e.id;
-    //playerChoice.toLowerCase();
     if (playerChoice === computerChoice) {
-        console.log("You tied!");
+        gameText.textContent = "You tied!";
     }   else if (playerChoice === "rock" & computerChoice === "paper") {
-        console.log("Paper beats rock, you lose!");
-        return --playerScore;
+        gameText.textContent = "Paper beats rock, you lose the round!";
+        computerScoreContainer.textContent = ++computerScore;
     }   else if (playerChoice === "rock" & computerChoice === "scissors") {
-        console.log("Rock beats scissors, you win!");
-        return ++playerScore;
+        gameText.textContent = "Rock beats scissors, you win the round!";
+        playerScoreContainer.textContent = ++playerScore;
     }   else if (playerChoice === "paper" & computerChoice === "rock") {
-        console.log("Paper beats rock, you win!");
-        return ++playerScore;
+        gameText.textContent = "Paper beats rock, you win the round!";
+        playerScoreContainer.textContent = ++playerScore;
     }   else if (playerChoice === "paper" & computerChoice === "scissors") {
-        console.log("Scissors beats paper, you lose!");
-        return --playerScore;
+        gameText.textContent = "Scissors beats paper, you lose the round!";
+        computerScoreContainer.textContent = ++computerScore;
     }   else if (playerChoice === "scissors" & computerChoice === "rock") {
-        console.log("Rock beats scissors, you lose!");
-        return --playerScore;
+        gameText.textContent = "Rock beats scissors, you lose the round!";
+        computerScoreContainer.textContent = ++computerScore;
     }   else if (playerChoice === "scissors" & computerChoice === "paper") {
-        console.log("Scissors beats paper, you win!");
-        return ++playerScore;
+        gameText.textContent = "Scissors beats paper, you win the round!";
+        playerScoreContainer.textContent = ++playerScore;
     }   else {
-        console.log("Please try again!")
+        gameText.textContent = "Please try again!";
+    }
+    if (playerScore >= 5) {
+        gameText.textContent = "You win the game!";
+        playerScore = 0;
+        playerScoreContainer.textContent = playerScore;
+        computerScore = 0;
+        computerScoreContainer.textContent = computerScore;
+    }   
+    if (computerScore >= 5) {
+        gameText.textContent = "You lost the game!";
+        playerScore = 0;
+        playerScoreContainer.textContent = playerScore;
+        computerScore = 0;
+        computerScoreContainer.textContent = computerScore;
     }
 }
 
